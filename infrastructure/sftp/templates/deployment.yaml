@@ -1,0 +1,141 @@
+apiVersion: apps/v1
+kind:       Deployment
+metadata:
+  name: {{ include "sftp-server.fullname" . }}
+  labels:
+    app.kubernetes.io/name: {{ include "sftp-server.name" . }}
+    helm.sh/chart: {{ include "sftp-server.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "sftp-server.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "sftp-server.name" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+        {{- if .Values.vxlanController.enabled }}
+        {{ .Values.vxlanController.metadataKey }}: "true"
+      {{- end }}
+      annotations:
+        {{- if .Values.vxlanController.enabled }}
+          {{ .Values.vxlanController.annotationKey }}: |
+          {{ .Values.vxlanController.network }}
+          {{ if .Values.vxlanController.ip -}}         ip= {{- .Values.vxlanController.ip }} {{- end}}
+          {{ if .Values.vxlanController.route -}}      route= {{- .Values.vxlanController.route }} {{- end}}
+    {{- end }}
+    spec:
+      initContainers:
+      {{- if .Values.vxlanController.enabled }}
+      - name: vxlan-controller-agent-init
+        image: {{ .Values.vxlanController.image.repository }}:{{ .Values.vxlanController.image.tag }}
+        imagePullPolicy: {{ .Values.vxlanController.image.pullPolicy  | quote }}
+        resources:
+        {{ toYaml .Values.vxlanController.resources | indent 10 }}
+        securityContext:
+          capabilities:
+            add: [ "NET_ADMIN" ]
+      {{- end }}
+      containers:
+        {{- if .Values.debug.enabled }}
+        - name: debug
+          image: {{ .Values.debug.image.repository }}:{{ .Values.debug.image.tag }}
+          imagePullPolicy: {{ .Values.debug.image.pullPolicy | quote }}
+          resources: {{- toYaml .Values.resources.debug | nindent 12 }}
+          securityContext:
+            capabilities:
+              add: [ "NET_ADMIN" ]
+          command:
+            - sh
+            - -c
+            - "trap : TERM INT; (while true; do sleep 1000; done) & wait"
+        {{- end }}
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          securityContext:
+            capabilities:
+              add: [ "NET_ADMIN" ]
+          ports:
+            - name:          ssh
+              containerPort: 22
+              protocol:      TCP
+          volumeMounts:
+            - name:      sftp-config
+              mountPath: /etc/sftp/
+            {{- if .Values.persistentVolume.enabled }}
+            - name:      data
+              mountPath: /home/ {{- .Values.sftpConfig.username -}} /
+              {{- if .Values.persistentVolume.subPath }}
+              subPath:   "{{ .Values.persistentVolume.subPath }}"
+            {{- end }}
+            {{- end }}
+            {{- if .Values.sftpConfig.authorizedKeys }}
+            - name:      authorized-keys
+              mountPath: /home/ {{- .Values.sftpConfig.username -}} /.ssh/keys/
+            {{- end }}
+            {{- if .Values.sftpConfig.hostKeys }}
+            {{- range .Values.sftpConfig.hostKeys.keys }}
+            - name:      ssh-host-keys
+              mountPath: /etc/ssh/{{ . }}
+              subPath: {{ . }}
+          {{- end }}
+          {{- end }}
+          livenessProbe:
+            tcpSocket:
+              port: 22
+          readinessProbe:
+            tcpSocket:
+              port: 22
+          resources: {{- toYaml .Values.resources.sftp | nindent 12 }}
+        {{- if .Values.vxlanController.enabled }}
+        - name: vxlan-controller-agent
+          image: {{ .Values.vxlanController.image.repository }}:{{ .Values.vxlanController.image.tag }}
+          imagePullPolicy: {{ .Values.vxlanController.image.pullPolicy | quote }}
+          resources:
+          {{- toYaml .Values.vxlanController.resources | nindent 12 }}
+          securityContext:
+            capabilities:
+              add:
+                - NET_ADMIN
+      {{- end }}
+      imagePullSecrets:
+        - name: {{{{ image_pull_secret_name }}}}
+      volumes:
+        - name: sftp-config
+          configMap:
+            name: {{ include "sftp-server.fullname" . }}-users
+        {{- if .Values.sftpConfig.authorizedKeys }}
+        - name: authorized-keys
+          configMap:
+            name: {{ template "sftp-server.fullname" . }}-authorized-keys
+        {{- end }}
+        {{- if .Values.sftpConfig.hostKeys }}
+        - name: ssh-host-keys
+          secret:
+            secretName: {{ .Values.sftpConfig.hostKeys.secret }}
+            defaultMode: 384
+        {{- end }}
+        {{- if .Values.persistentVolume.enabled }}
+        - name: data
+          persistentVolumeClaim:
+            claimName: {{ if .Values.persistentVolume.existingClaim }}{{ .Values.persistentVolume.existingClaim }}{{- else }}{{ template "sftp-server.fullname" . }}-data{{- end }}
+      {{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+      {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+      {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+  {{- toYaml . | nindent 8 }}
+  {{- end }}

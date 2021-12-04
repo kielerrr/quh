@@ -1,0 +1,14 @@
+fastapi==0.68.1
+uvicorn==0.15.0
+jinja2
+sqlalchemy==1.4.25
+pydantic==1.8.2
+uvicorn
+fastapi==0.68.1
+requests==2.26.0
+python-dotenv
+Pillow==8.3.2
+requests
+beautifulsoup4
+aiofiles
+starlette-prometheus

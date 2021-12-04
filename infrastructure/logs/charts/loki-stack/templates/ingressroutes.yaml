@@ -1,0 +1,114 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind:       IngressRoute
+metadata:
+  name: grafana
+
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`grafana.{{{{ root_domain }}}}`)
+      middlewares:
+        - name:      webauth-secret
+          namespace: default
+        - name:      to-https
+          namespace: default
+      kind:  Rule
+      services:
+        - name: logs-grafana
+          kind: Service
+          port: service
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind:       IngressRoute
+metadata:
+  name: grafana-secure
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`grafana.{{{{ root_domain }}}}`)
+      kind:  Rule
+      services:
+        - name: logs-grafana
+          kind: Service
+          port: service
+
+  tls:
+    certResolver: letsencrypt
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind:       IngressRoute
+metadata:
+  name: loki
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`loki.{{{{ root_domain }}}}`) # && PathPrefix(`/loki`)
+      kind:  Rule
+      services:
+        - name: logs-loki
+          kind: Service
+          port: http-metrics
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind:       IngressRoute
+metadata:
+  name: loki-secure
+
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`loki.{{{{ root_domain }}}}`) # && PathPrefix(`/loki`)
+      kind:  Rule
+      services:
+        - name: logs-loki
+          kind: Service
+          port: http-metrics
+  tls:
+    certResolver: letsencrypt
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind:       IngressRoute
+metadata:
+  name: prom
+
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`prom.{{{{ root_domain }}}}`)
+      middlewares:
+        - name:      webauth-secret
+          namespace: default
+        - name:      to-https
+          namespace: default
+
+      kind:  Rule
+      services:
+        - name: logs-prometheus-server
+          kind: Service
+          port: 80
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind:       IngressRoute
+metadata:
+  name: prom-secure
+
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`prom.{{{{ root_domain }}}}`)
+      kind:  Rule
+      services:
+        - name: logs-prometheus-server
+          kind: Service
+          port: 80
+  tls:
+    certResolver: letsencrypt

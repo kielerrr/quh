@@ -1,0 +1,2831 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_PROMETHEUS",
+      "label": "prometheus",
+      "description": "Prometheus data source",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    }
+  ],
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "4.4.3"
+    },
+    {
+      "type": "panel",
+      "id": "graph",
+      "name": "Graph",
+      "version": ""
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "1.0.0"
+    }
+  ],
+  "annotations": {
+    "list": []
+  },
+  "description": "Netstat Metrics for Kubernetes Cluster",
+  "editable": true,
+  "gnetId": 3259,
+  "graphTooltip": 0,
+  "hideControls": false,
+  "id": null,
+  "links": [],
+  "refresh": "10s",
+  "rows": [
+    {
+      "collapse": true,
+      "height": 450,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROMETHEUS}",
+          "fill": 1,
+          "id": 6,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": true,
+            "show": true,
+            "sideWidth": 350,
+            "total": true,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 1,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "irate(node_netstat_Ip_DefaultTTL{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "DefaultTTL",
+              "refId": "A",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_Ip_Forwarding{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "Forwarding",
+              "refId": "B",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_Ip_ForwDatagrams{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "ForwDatagrams",
+              "refId": "C",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_Ip_FragCreates{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "FragCreates",
+              "refId": "D",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_Ip_FragFails{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "FragFails",
+              "refId": "E",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_Ip_FragOKs{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "FragOKs",
+              "refId": "F",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_Ip_InAddrErrors{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "InAddrErrors",
+              "refId": "G",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_Ip_InDelivers{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "InDelivers",
+              "refId": "H",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_Ip_InDiscards{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "InDiscards",
+              "refId": "I",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_Ip_InHdrErrors{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "InHdrErrors",
+              "refId": "J",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_Ip_InReceives{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "InReceives",
+              "refId": "K",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_Ip_InUnknownProtos{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "InUnknownProtos",
+              "refId": "L",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_Ip_OutNoRoutes{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "OutNoRoutes",
+              "refId": "M",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_Ip_OutRequests{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "OutRequests",
+              "refId": "N",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_Ip_ReasmFails{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "ReasmFails",
+              "refId": "O",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_Ip_ReasmOKs{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "ReasmOKs",
+              "refId": "P",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_Ip_ReasmReqds{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "ReasmReqds",
+              "refId": "Q",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_Ip_ReasmTimeout{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "ReasmTimeout",
+              "refId": "R",
+              "step": 2,
+              "target": ""
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "IP",
+          "tooltip": {
+            "shared": true,
+            "sort": 2,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "none",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": true,
+      "title": "IP Statistics",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": true,
+      "height": "275",
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROMETHEUS}",
+          "fill": 1,
+          "id": 7,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": true,
+            "show": true,
+            "sideWidth": 350,
+            "total": true,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 1,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "irate(node_netstat_IpExt_InBcastOctets{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "InBcastOctets",
+              "refId": "A",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_IpExt_InMcastOctets{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "InMcastOctets",
+              "refId": "B",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_IpExt_InOctets{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "InOctets",
+              "refId": "C",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_IpExt_OutBcastOctets{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "OutBcastOctets",
+              "refId": "D",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_IpExt_OutMcastOctets{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "OutMcastOctets",
+              "refId": "E",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_IpExt_OutOctets{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "OutOctets",
+              "refId": "F",
+              "step": 2,
+              "target": ""
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "IP EXT - Octets",
+          "tooltip": {
+            "shared": true,
+            "sort": 2,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "none",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": true,
+      "title": "IP Extended Statistics - Octets",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": true,
+      "height": "250",
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROMETHEUS}",
+          "fill": 1,
+          "id": 8,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": true,
+            "show": true,
+            "sideWidth": 350,
+            "total": true,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 1,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "irate(node_netstat_IpExt_InBcastPkts{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "InBcastPkts",
+              "refId": "A",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_IpExt_InCEPkts{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "InCEPkts",
+              "refId": "B",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_IpExt_InECT0Pkts{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "InECT0Pkts",
+              "refId": "C",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_IpExt_InECT1Pkts{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "InECT1Pkts",
+              "refId": "D",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_IpExt_InMcastPkts{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "InMcastPkts",
+              "refId": "E",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_IpExt_InNoECTPkts{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "InNoECTPkts",
+              "refId": "F",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_IpExt_InTruncatedPkts{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "InTruncatedPkts",
+              "refId": "G",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_IpExt_OutBcastPkts{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "OutBcastPkts",
+              "refId": "H",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_IpExt_OutMcastPkts{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "OutMcastPkts",
+              "refId": "I",
+              "step": 2,
+              "target": ""
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "IP EXT - Packets",
+          "tooltip": {
+            "shared": true,
+            "sort": 2,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "none",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": true,
+      "title": "IP Extended Statistics - Packets",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": true,
+      "height": 250,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROMETHEUS}",
+          "fill": 1,
+          "id": 16,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": true,
+            "show": true,
+            "sideWidth": 350,
+            "total": true,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 1,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "irate(node_netstat_IpExt_InCsumErrors{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "InCsumErrors",
+              "refId": "A",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_IpExt_InNoRoutes{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "InNoRoutes",
+              "refId": "B",
+              "step": 2,
+              "target": ""
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "IP EXT - Other",
+          "tooltip": {
+            "shared": true,
+            "sort": 2,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "none",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": true,
+      "title": "IP Extended Statistics - Others",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": "375",
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROMETHEUS}",
+          "fill": 1,
+          "id": 9,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": true,
+            "show": true,
+            "sideWidth": 350,
+            "total": true,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 1,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "irate(node_netstat_Tcp_ActiveOpens{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "ActiveOpens",
+              "refId": "A",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_Tcp_AttemptFails{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "AttemptFails",
+              "refId": "B",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_Tcp_CurrEstab{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "CurrEstab",
+              "refId": "C",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_Tcp_EstabResets{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "EstabResets",
+              "refId": "D",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_Tcp_InCsumErros{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "InCsumErros",
+              "refId": "E",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_Tcp_InErrs{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "InErrs",
+              "refId": "F",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_Tcp_InSegs{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "InSegs",
+              "refId": "G",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_Tcp_MaxConn{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "MaxConn",
+              "refId": "H",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_Tcp_OutRsts{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "OutRsts",
+              "refId": "I",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_Tcp_OutSegs{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "OutSegs",
+              "refId": "J",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_Tcp_PassiveOpens{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "PassiveOpens",
+              "refId": "K",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_Tcp_RetransSegs{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "RetransSegs",
+              "refId": "L",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_Tcp_RtoAlgorithm{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "RtoAlgorithm",
+              "refId": "M",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_Tcp_RtoMax{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "RtoMax",
+              "refId": "N",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_Tcp_RtoMin{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "RtoMin",
+              "refId": "O",
+              "step": 2,
+              "target": ""
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "TCP",
+          "tooltip": {
+            "shared": true,
+            "sort": 2,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "none",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": true,
+      "title": "TCP Statistics",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": true,
+      "height": "500",
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROMETHEUS}",
+          "decimals": 0,
+          "fill": 1,
+          "id": 10,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": true,
+            "show": true,
+            "sideWidth": 350,
+            "total": true,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 1,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "irate(node_netstat_TcpExt_ArpFilter{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "ArpFilter",
+              "refId": "A",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_BusyPollRxPackets{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "BusyPollRxPackets",
+              "refId": "B",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_DelayedACKLocked{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "DelayedACKLocked",
+              "refId": "C",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_DelayedACKLost{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "DelayedACKLost",
+              "refId": "D",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_DelayedACKs{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "DelayedACKs",
+              "refId": "E",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_EmbryonicRsts{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "EmbryonicRsts",
+              "refId": "F",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_IPReversePathFilter{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "IPReversePathFilter",
+              "refId": "G",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_ListenDrops{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "ListenDrops",
+              "refId": "H",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_ListenOverflows{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "ListenOverflows",
+              "refId": "I",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_LockDroppedIcmps{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "LockDroppedIcmps",
+              "refId": "J",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_OfoPruned{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "OfoPruned",
+              "refId": "K",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_OutOfWindowIcmps{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "OutOfWindowIcmps",
+              "refId": "L",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_PAWSActive{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "PAWSActive",
+              "refId": "M",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_PAWSEstab{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "PAWSEstab",
+              "refId": "N",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_PAWSPassive{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "PAWSPassive",
+              "refId": "O",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_PruneCalled{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "PruneCalled",
+              "refId": "P",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_RcvPruned{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "RcvPruned",
+              "refId": "Q",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_SyncookiesFailed{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "SyncookiesFailed",
+              "refId": "R",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_SyncookiesRecv{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "SyncookiesRecv",
+              "refId": "S",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_SyncookiesSent{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "SyncookiesSent",
+              "refId": "T",
+              "step": 2,
+              "target": ""
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "TCP EXT - 1",
+          "tooltip": {
+            "shared": true,
+            "sort": 2,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "none",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": true,
+      "title": "TCP Extended Statistics 1",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": true,
+      "height": "500",
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROMETHEUS}",
+          "decimals": 0,
+          "fill": 1,
+          "id": 11,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": true,
+            "show": true,
+            "sideWidth": 350,
+            "total": true,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 1,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPAbortFailed{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPAbortFailed",
+              "refId": "A",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPAbortOnClose{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPAbortOnClose",
+              "refId": "B",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPAbortOnData{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPAbortOnData",
+              "refId": "C",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPAbortOnLinger{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPAbortOnLinger",
+              "refId": "D",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPAbortOnMemory{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPAbortOnMemory",
+              "refId": "E",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPAbortOnTimeout{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPAbortOnTimeout",
+              "refId": "F",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPACKSkippedChallenge{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPACKSkippedChallenge",
+              "refId": "G",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPACKSkippedFinWait2{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPACKSkippedFinWait2",
+              "refId": "H",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPACKSkippedPAWS{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPACKSkippedPAWS",
+              "refId": "I",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPACKSkippedSeq{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPACKSkippedSeq",
+              "refId": "J",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPACKSkippedSynRecv{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPACKSkippedSynRecv",
+              "refId": "K",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPACKSkippedTimeWait{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPACKSkippedTimeWait",
+              "refId": "L",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPAutoCorking{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPAutoCorking",
+              "refId": "M",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPBacklogDrop{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPBacklogDrop",
+              "refId": "N",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPChallengeACK{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPChallengeACK",
+              "refId": "O",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPDeferAcceptDrop{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPDeferAcceptDrop",
+              "refId": "P",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPDirectCopyFromBacklog{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPDirectCopyFromBacklog",
+              "refId": "Q",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPDirectCopyFromPrequeue{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPDirectCopyFromPrequeue",
+              "refId": "R",
+              "step": 2,
+              "target": ""
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "TCP EXT - 2",
+          "tooltip": {
+            "shared": true,
+            "sort": 2,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "none",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": true,
+      "title": "TCP Extended Statistics 2",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": true,
+      "height": "500",
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROMETHEUS}",
+          "decimals": 0,
+          "fill": 1,
+          "id": 12,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": true,
+            "show": true,
+            "sideWidth": 350,
+            "total": true,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 1,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPDSACKIgnoredNoUndo{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPDSACKIgnoredNoUndo",
+              "refId": "A",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPDSACKIgnoredOld{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPDSACKIgnoredOld",
+              "refId": "B",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPDSACKOfoRecv{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPDSACKOfoRecv",
+              "refId": "C",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPDSACKOfoSent{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPDSACKOfoSent",
+              "refId": "D",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPDSACKOldSent{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPDSACKOldSent",
+              "refId": "E",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPDSACKRecv{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPDSACKRecv",
+              "refId": "F",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPDSACKUndo{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPDSACKUndo",
+              "refId": "G",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPFACKReorder{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPFACKReorder",
+              "refId": "H",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPFastOpenActive{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPFastOpenActive",
+              "refId": "I",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPFastOpenActiveFail{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPFastOpenActiveFail",
+              "refId": "J",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPFastOpenCookieReqd{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPFastOpenCookieReqd",
+              "refId": "K",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPFastOpenListenOverflow{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPFastOpenListenOverflow",
+              "refId": "L",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPFastOpenPassive{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPFastOpenPassive",
+              "refId": "M",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPFastOpenPassiveFail{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPFastOpenPassiveFail",
+              "refId": "N",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPFastRetrans{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPFastRetrans",
+              "refId": "O",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPForwardRetrans{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPForwardRetrans",
+              "refId": "P",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPFromZeroWindowAdv{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPFromZeroWindowAdv",
+              "refId": "Q",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPFullUndo{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPFullUndo",
+              "refId": "R",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPHPAcks{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPHPAcks",
+              "refId": "S",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPHPHits{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPHPHits",
+              "refId": "T",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPHPHitsToUser{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPHPHitsToUser",
+              "refId": "U",
+              "step": 2,
+              "target": ""
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "TCP EXT - 3",
+          "tooltip": {
+            "shared": true,
+            "sort": 2,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "none",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": true,
+      "title": "TCP Extended Statistics 3",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": true,
+      "height": "500",
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROMETHEUS}",
+          "decimals": 0,
+          "fill": 1,
+          "id": 13,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": true,
+            "show": true,
+            "sideWidth": 350,
+            "total": true,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 1,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPHystartDelayCwnd{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPHystartDelayCwnd",
+              "refId": "A",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPHystartDelayDetect{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPHystartDelayDetect",
+              "refId": "B",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPHystartTrainCwnd{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPHystartTrainCwnd",
+              "refId": "C",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPHystartTrainDetect{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPHystartTrainDetect",
+              "refId": "D",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPKeepAlive{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPKeepAlive",
+              "refId": "E",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPLossFailures{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPLossFailures",
+              "refId": "F",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPLossProbeRecovery{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPLossProbeRecovery",
+              "refId": "G",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPLossProbes{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPLossProbes",
+              "refId": "H",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPLossUndo{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPLossUndo",
+              "refId": "I",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPLostRetransmit{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPLostRetransmit",
+              "refId": "J",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPMD5NotFound{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPMD5NotFound",
+              "refId": "K",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPMD5Unexpected{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPMD5Unexpected",
+              "refId": "L",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPMemoryPressures{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPMemoryPressures",
+              "refId": "M",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPMinTTLDrop{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPMinTTLDrop",
+              "refId": "N",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPMTUPFail{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPMTUPFail",
+              "refId": "O",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPMTUPSuccess{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPMTUPSuccess",
+              "refId": "P",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPOFODrop{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPOFODrop",
+              "refId": "Q",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPOFOMerge{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPOFOMerge",
+              "refId": "R",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPOFOQueue{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPOFOQueue",
+              "refId": "S",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPOrigDataSent{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPOrigDataSent",
+              "refId": "T",
+              "step": 2,
+              "target": ""
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "TCP EXT - 4",
+          "tooltip": {
+            "shared": true,
+            "sort": 2,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "none",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": true,
+      "title": "TCP Extended Statistics 4",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": true,
+      "height": "500",
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROMETHEUS}",
+          "decimals": 0,
+          "fill": 1,
+          "id": 14,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": true,
+            "show": true,
+            "sideWidth": 350,
+            "total": true,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 1,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPPartialUndo{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPPartialUndo",
+              "refId": "A",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPPrequeued{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPPrequeued",
+              "refId": "B",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPPrequeueDropped{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPPrequeueDropped",
+              "refId": "C",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPPureAcks{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPPureAcks",
+              "refId": "D",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPRcvCoalesce{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPRcvCoalesce",
+              "refId": "E",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPRcvCollapsed{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPRcvCollapsed",
+              "refId": "F",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPRenoFailures{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPRenoFailures",
+              "refId": "G",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPRenoRecovery{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPRenoRecovery",
+              "refId": "H",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPRenoRecoveryFail{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPRenoRecoveryFail",
+              "refId": "I",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPRenoReorder{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPRenoReorder",
+              "refId": "J",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPReqQFullDoCookies{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPReqQFullDoCookies",
+              "refId": "K",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPReqQFullDrop{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPReqQFullDrop",
+              "refId": "L",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPRetransFail{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPRetransFail",
+              "refId": "M",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPSACKDiscard{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPSACKDiscard",
+              "refId": "N",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPSackFailures{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPSackFailures",
+              "refId": "O",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPSackMerged{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPSackMerged",
+              "refId": "P",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPSackRecovery{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPSackRecovery",
+              "refId": "Q",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPSackRecoveryFail{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPSackRecoveryFail",
+              "refId": "R",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPSACKRenegin{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPSACKRenegin",
+              "refId": "S",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPSACKReorder{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPSACKReorder",
+              "refId": "T",
+              "step": 2,
+              "target": ""
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "TCP EXT - 5",
+          "tooltip": {
+            "shared": true,
+            "sort": 2,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "none",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": true,
+      "title": "TCP Extended Statistics 5",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": true,
+      "height": "500",
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROMETHEUS}",
+          "decimals": 0,
+          "fill": 1,
+          "id": 15,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": true,
+            "show": true,
+            "sideWidth": 350,
+            "total": true,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 1,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPSackShifted{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPSackShifted",
+              "refId": "A",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPSackShiftFallback{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPSackShiftFallback",
+              "refId": "B",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPSchedulerFailed{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPSchedulerFailed",
+              "refId": "C",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPSlowStartRetrans{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPSlowStartRetrans",
+              "refId": "D",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPSpuriousRTOs{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPSpuriousRTOs",
+              "refId": "E",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPSpuriousRtxHostQueues{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPSpuriousRtxHostQueues",
+              "refId": "F",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPSYNChallenge{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPSYNChallenge",
+              "refId": "G",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPSynRetrans{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPSynRetrans",
+              "refId": "H",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPTimeouts{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPTimeouts",
+              "refId": "I",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPTimeWaitOverflow{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPTimeWaitOverflow",
+              "refId": "J",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPToZeroWindowAdv{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPToZeroWindowAdv",
+              "refId": "K",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPTSReorder{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPTSReorder",
+              "refId": "L",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPWantZeroWindowAdv{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPWantZeroWindowAdv",
+              "refId": "M",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TCPWinProbe{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TCPWinProbe",
+              "refId": "N",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TW{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TW",
+              "refId": "O",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TWKilled{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TWKilled",
+              "refId": "P",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_TcpExt_TWRecycled{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "TWRecycled",
+              "refId": "Q",
+              "step": 2,
+              "target": ""
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "TCP EXT - 6",
+          "tooltip": {
+            "shared": true,
+            "sort": 2,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "none",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": true,
+      "title": "TCP Extended Statistics 6",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": true,
+      "height": "250",
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROMETHEUS}",
+          "decimals": 0,
+          "fill": 1,
+          "id": 17,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": true,
+            "show": true,
+            "sideWidth": 350,
+            "total": true,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 1,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "irate(node_netstat_Udp_IgnoredMulti{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "IgnoredMulti",
+              "refId": "A",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_Udp_InCsumErrors{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "InCsumErrors",
+              "refId": "B",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_Udp_InDatagrams{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "InDatagrams",
+              "refId": "C",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_Udp_InErrors{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "InErrors",
+              "refId": "D",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_Udp_NoPorts{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "NoPorts",
+              "refId": "E",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_Udp_OutDatagrams{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "OutDatagrams",
+              "refId": "F",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_Udp_RcvbufErrors{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "RcvbufErrors",
+              "refId": "G",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_Udp_SndbufErrors{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "SndbufErrors",
+              "refId": "H",
+              "step": 2,
+              "target": ""
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "UDP",
+          "tooltip": {
+            "shared": true,
+            "sort": 2,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "none",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": true,
+      "title": "UDP Statistics",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": true,
+      "height": 250,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROMETHEUS}",
+          "decimals": 0,
+          "fill": 1,
+          "id": 18,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": true,
+            "show": true,
+            "sideWidth": 350,
+            "total": true,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 1,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "irate(node_netstat_UdpLite_IgnoredMulti{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "IgnoredMulti",
+              "refId": "A",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_UdpLite_InCsumErrors{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "InCsumErrors",
+              "refId": "B",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_UdpLite_InDatagrams{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "InDatagrams",
+              "refId": "C",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_UdpLite_InErrors{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "InErrors",
+              "refId": "D",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_UdpLite_NoPorts{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "NoPorts",
+              "refId": "E",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_UdpLite_OutDatagrams{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "OutDatagrams",
+              "refId": "F",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_UdpLite_RcvbufErrors{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "RcvbufErrors",
+              "refId": "G",
+              "step": 2,
+              "target": ""
+            },
+            {
+              "expr": "irate(node_netstat_UdpLite_SndbufErrors{job=\"kubernetes-pods\",instance=~\"$node\"}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "SndbufErrors",
+              "refId": "H",
+              "step": 2,
+              "target": ""
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "UDP LITE",
+          "tooltip": {
+            "shared": true,
+            "sort": 2,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "none",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": true,
+      "title": "UDP Light Statistics",
+      "titleSize": "h6"
+    }
+  ],
+  "schemaVersion": 14,
+  "style": "dark",
+  "tags": [
+    "netstat"
+  ],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "${DS_PROMETHEUS}",
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "node",
+        "options": [],
+        "query": "label_values(node_boot_time, instance)",
+        "refresh": 2,
+        "regex": "",
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-30m",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "browser",
+  "title": "Kubernetes Netstat",
+  "version": 2
+}

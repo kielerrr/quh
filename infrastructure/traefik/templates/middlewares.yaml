@@ -1,0 +1,46 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind:       Middleware
+metadata:
+  name: webauth-secret
+spec:
+  basicAuth:
+    secret: webauth-secret
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind:       Middleware
+metadata:
+  name: to-https
+spec:
+  redirectScheme:
+    scheme:    https
+    permanent: true
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: ratelimit
+spec:
+  rateLimit:
+    average: {{{{ rate_limit_avg }}}}
+    burst:   {{{{ rate_limit_burst }}}}
+# ---
+{{/*apiVersion: traefik.containo.us/v1alpha1*/}}
+{{/*kind:       Middleware*/}}
+{{/*metadata:*/}}
+{{/*  name: cors-header*/}}
+{{/*spec:*/}}
+{{/*  headers:*/}}
+{{/*    accessControlAllowMethods:*/}}
+{{/*      - "GET"*/}}
+{{/*      - "OPTIONS"*/}}
+{{/*      - "POST"*/}}
+{{/*      - "PATCH"*/}}
+{{/*      - "DELETE"*/}}
+{{/*      - "PUT"*/}}
+{{/*    accessControlAllowOriginList:*/}}
+{{/*      - "*"*/}}
+{{/*    customResponseHeaders:*/}}
+{{/*      Access-Control-Allow-Origin: "*"*/}}
+{{/*    accessControlAllowCredentials: True*/}}
+{{/*    addVaryHeader: True*/}}
+{{/*---*/}}

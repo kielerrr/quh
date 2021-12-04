@@ -1,0 +1,198 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_PROMETHEUS-SYS-01",
+      "label": "prometheus-sys-01",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    }
+  ],
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "7.4.0"
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "table-old",
+      "name": "Table (old)",
+      "version": ""
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "Prometheus Domain exporter metrics.",
+  "editable": true,
+  "gnetId": 13924,
+  "graphTooltip": 0,
+  "id": null,
+  "iteration": 1613739290909,
+  "links": [],
+  "panels": [
+    {
+      "columns": [],
+      "datasource": "${DS_PROMETHEUS-SYS-01}",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 12,
+        "w": 10,
+        "x": 0,
+        "y": 0
+      },
+      "id": 6,
+      "interval": "",
+      "links": [],
+      "pageSize": 20,
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 3,
+        "desc": false
+      },
+      "styles": [
+        {
+          "$$hashKey": "object:2588",
+          "alias": "days lefts",
+          "align": "auto",
+          "colorMode": "row",
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 0,
+          "pattern": "Value",
+          "thresholds": [
+            "30",
+            "60"
+          ],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "annotations": false,
+          "bucketAggs": [],
+          "expr": "domain_expiry_days",
+          "format": "table",
+          "instant": true,
+          "interval": "",
+          "labelSelector": "*",
+          "legendFormat": "",
+          "metrics": [
+            {
+              "$$hashKey": "object:137",
+              "field": "select field",
+              "id": "1",
+              "meta": {},
+              "settings": {
+                "size": 1000
+              },
+              "type": "raw_document"
+            }
+          ],
+          "query": "",
+          "refId": "A",
+          "target": "Query",
+          "timeField": "timestamp",
+          "type": "table"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Public Domain Expiration",
+      "transform": "table",
+      "transformations": [
+        {
+          "id": "seriesToColumns",
+          "options": {
+            "byField": "domain"
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true,
+              "__name__": true,
+              "instance": true,
+              "job": true
+            },
+            "indexByName": {},
+            "renameByName": {}
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "table-old"
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 27,
+  "style": "dark",
+  "tags": [
+    "prometheus",
+    "domain"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "prometheus-sys-01",
+          "value": "prometheus-sys-01"
+        },
+        "description": null,
+        "error": null,
+        "hide": 2,
+        "includeAll": false,
+        "label": "datasource",
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "/.*sys.*/",
+        "skipUrlSync": false,
+        "type": "datasource"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-24h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "9116 - Domain",
+  "uid": "0W76jeEGz",
+  "version": 1
+}

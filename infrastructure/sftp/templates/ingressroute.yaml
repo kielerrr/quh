@@ -1,0 +1,12 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind:       IngressRouteTCP
+metadata:
+  name: sftp
+spec:
+  entryPoints:
+    - sftp
+  routes:
+    - match: HostSNI(`*`)
+      services:
+        - name: sftp-sftp-server
+          port: 22

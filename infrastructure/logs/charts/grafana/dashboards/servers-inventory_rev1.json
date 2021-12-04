@@ -1,0 +1,1224 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_PROMETHEUS",
+      "label": "Prometheus",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    }
+  ],
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "5.1.3"
+    },
+    {
+      "type": "panel",
+      "id": "heatmap",
+      "name": "Heatmap",
+      "version": "5.0.0"
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "5.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "table",
+      "name": "Table",
+      "version": "5.0.0"
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": 9750,
+  "graphTooltip": 0,
+  "id": null,
+  "iteration": 1548843147622,
+  "links": [],
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 8,
+      "panels": [],
+      "title": "Distribution by Memory",
+      "type": "row"
+    },
+    {
+      "columns": [],
+      "datasource": "${DS_PROMETHEUS}",
+      "fontSize": "150%",
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 1
+      },
+      "hideTimeOverride": true,
+      "id": 17,
+      "links": [],
+      "pageSize": 0,
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 0,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "hidden"
+        },
+        {
+          "alias": "1Gb",
+          "colorMode": "cell",
+          "colors": [
+            "#5195ce",
+            "#1f78c1",
+            "#0a437c"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "mappingType": 1,
+          "pattern": "Value #A",
+          "thresholds": [
+            "5",
+            "10"
+          ],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "2Gb",
+          "colorMode": "cell",
+          "colors": [
+            "#5195ce",
+            "#1f78c1",
+            "#0a437c"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "mappingType": 1,
+          "pattern": "Value #B",
+          "thresholds": [
+            "5",
+            "10"
+          ],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "4Gb",
+          "colorMode": "cell",
+          "colors": [
+            "#5195ce",
+            "#1f78c1",
+            "#0a437c"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "mappingType": 1,
+          "pattern": "Value #D",
+          "thresholds": [
+            "5",
+            "10"
+          ],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "8Gb",
+          "colorMode": "cell",
+          "colors": [
+            "#5195ce",
+            "#1f78c1",
+            "#0a437c"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "mappingType": 1,
+          "pattern": "Value #H",
+          "thresholds": [
+            "5",
+            "10"
+          ],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "16Gb",
+          "colorMode": "cell",
+          "colors": [
+            "#5195ce",
+            "#1f78c1",
+            "#0a437c"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "mappingType": 1,
+          "pattern": "Value #P",
+          "thresholds": [
+            "5",
+            "10"
+          ],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "32Gb",
+          "colorMode": "cell",
+          "colors": [
+            "#5195ce",
+            "#1f78c1",
+            "#0a437c"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "mappingType": 1,
+          "pattern": "Value #U",
+          "thresholds": [
+            "5",
+            "10"
+          ],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "32Gb",
+          "colorMode": "cell",
+          "colors": [
+            "#5195ce",
+            "#1f78c1",
+            "#0a437c"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "mappingType": 1,
+          "pattern": "Value #`",
+          "thresholds": [
+            "5",
+            "10"
+          ],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 2,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "expr": "count(node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 > 0 and node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 < 1)",
+          "format": "table",
+          "instant": true,
+          "intervalFactor": 1,
+          "legendFormat": "1G",
+          "refId": "A"
+        },
+        {
+          "expr": "count(node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 > 1 and node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 < 2)",
+          "format": "table",
+          "instant": true,
+          "intervalFactor": 1,
+          "legendFormat": "2Gb",
+          "refId": "B"
+        },
+        {
+          "expr": "count(node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 > 2 and node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 < 3)",
+          "format": "table",
+          "instant": true,
+          "intervalFactor": 1,
+          "legendFormat": "3Gb",
+          "refId": "C"
+        },
+        {
+          "expr": "count(node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 > 3 and node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 < 4)",
+          "format": "table",
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "4Gb",
+          "refId": "D"
+        },
+        {
+          "expr": "count(node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 > 4 and node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 < 5)",
+          "format": "table",
+          "instant": true,
+          "intervalFactor": 1,
+          "legendFormat": "5Gb",
+          "refId": "E"
+        },
+        {
+          "expr": "count(node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 > 5 and node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 < 6)",
+          "format": "table",
+          "instant": true,
+          "intervalFactor": 1,
+          "legendFormat": "6Gb",
+          "refId": "F"
+        },
+        {
+          "expr": "count(node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 > 6 and node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 < 7)",
+          "format": "table",
+          "instant": true,
+          "intervalFactor": 1,
+          "legendFormat": "7Gb",
+          "refId": "G"
+        },
+        {
+          "expr": "count(node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 > 7 and node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 < 8)",
+          "format": "table",
+          "instant": true,
+          "intervalFactor": 1,
+          "legendFormat": "8Gb",
+          "refId": "H"
+        },
+        {
+          "expr": "count(node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 > 8 and node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 < 9)",
+          "format": "table",
+          "instant": true,
+          "intervalFactor": 1,
+          "legendFormat": "9Gb",
+          "refId": "I"
+        },
+        {
+          "expr": "count(node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 > 9 and node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 < 10)",
+          "format": "table",
+          "instant": true,
+          "intervalFactor": 1,
+          "legendFormat": "10Gb",
+          "refId": "J"
+        },
+        {
+          "expr": "count(node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 > 10 and node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 < 11)",
+          "format": "table",
+          "instant": true,
+          "intervalFactor": 1,
+          "legendFormat": "11Gb",
+          "refId": "K"
+        },
+        {
+          "expr": "count(node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 > 11 and node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 < 12)",
+          "format": "table",
+          "instant": true,
+          "intervalFactor": 1,
+          "legendFormat": "12Gb",
+          "refId": "L"
+        },
+        {
+          "expr": "count(node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 > 12 and node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 < 13)",
+          "format": "table",
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "13Gb",
+          "refId": "M"
+        },
+        {
+          "expr": "count(node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 > 13 and node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 < 14)",
+          "format": "table",
+          "instant": true,
+          "intervalFactor": 1,
+          "legendFormat": "14Gb",
+          "refId": "N"
+        },
+        {
+          "expr": "count(node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 > 14 and node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 < 15)",
+          "format": "table",
+          "instant": true,
+          "intervalFactor": 1,
+          "legendFormat": "15Gb",
+          "refId": "O"
+        },
+        {
+          "expr": "count(node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 > 15 and node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 < 16)",
+          "format": "table",
+          "instant": true,
+          "intervalFactor": 1,
+          "legendFormat": "16Gb",
+          "refId": "P"
+        },
+        {
+          "expr": "count(node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 > 16 and node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 < 17)",
+          "format": "table",
+          "instant": true,
+          "intervalFactor": 1,
+          "legendFormat": "17Gb",
+          "refId": "Q"
+        },
+        {
+          "expr": "count(node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 > 17 and node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 < 18)",
+          "format": "table",
+          "instant": true,
+          "intervalFactor": 1,
+          "legendFormat": "18Gb",
+          "refId": "R"
+        },
+        {
+          "expr": "count(node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 > 18 and node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 < 19)",
+          "format": "table",
+          "instant": true,
+          "intervalFactor": 1,
+          "legendFormat": "19Gb",
+          "refId": "S"
+        },
+        {
+          "expr": "count(node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 > 19 and node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 < 20)",
+          "format": "table",
+          "instant": true,
+          "intervalFactor": 1,
+          "legendFormat": "20Gb",
+          "refId": "T"
+        },
+        {
+          "expr": "count(node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 > 20 and node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 < 21)",
+          "format": "table",
+          "instant": true,
+          "intervalFactor": 1,
+          "legendFormat": "21Gb",
+          "refId": "U"
+        },
+        {
+          "expr": "count(node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 > 21 and node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 < 22)",
+          "format": "table",
+          "instant": true,
+          "intervalFactor": 1,
+          "legendFormat": "22Gb",
+          "refId": "V"
+        },
+        {
+          "expr": "count(node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 > 22 and node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 < 23)",
+          "format": "table",
+          "instant": true,
+          "intervalFactor": 1,
+          "legendFormat": "23Gb",
+          "refId": "W"
+        },
+        {
+          "expr": "count(node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 > 23 and node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 < 24)",
+          "format": "table",
+          "instant": true,
+          "intervalFactor": 1,
+          "legendFormat": "24Gb",
+          "refId": "X"
+        },
+        {
+          "expr": "count(node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 > 24 and node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 < 25)",
+          "format": "table",
+          "instant": true,
+          "intervalFactor": 1,
+          "legendFormat": "25Gb",
+          "refId": "Y"
+        },
+        {
+          "expr": "count(node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 > 25 and node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 < 26)",
+          "format": "table",
+          "instant": true,
+          "intervalFactor": 1,
+          "legendFormat": "26Gb",
+          "refId": "Z"
+        },
+        {
+          "expr": "count(node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 > 26 and node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 < 27)",
+          "format": "table",
+          "instant": true,
+          "intervalFactor": 1,
+          "legendFormat": "27Gb"
+        },
+        {
+          "expr": "count(node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 > 27 and node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 < 28)",
+          "format": "table",
+          "instant": true,
+          "intervalFactor": 1,
+          "legendFormat": "28Gb"
+        },
+        {
+          "expr": "count(node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 > 28 and node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 < 29)",
+          "format": "table",
+          "instant": true,
+          "intervalFactor": 1,
+          "legendFormat": "29Gb"
+        },
+        {
+          "expr": "count(node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 > 29 and node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 < 30)",
+          "format": "table",
+          "instant": true,
+          "intervalFactor": 1,
+          "legendFormat": "30Gb"
+        },
+        {
+          "expr": "count(node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 > 30 and node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 < 31)",
+          "format": "table",
+          "instant": true,
+          "intervalFactor": 1,
+          "legendFormat": "31Gb"
+        },
+        {
+          "expr": "count(node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 > 31 and node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 < 32)",
+          "format": "table",
+          "instant": true,
+          "intervalFactor": 1,
+          "legendFormat": "32Gb"
+        },
+        {
+          "expr": "count(node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 > 32 and node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024 < 64)",
+          "format": "table",
+          "instant": true,
+          "intervalFactor": 1,
+          "legendFormat": "64Gb"
+        }
+      ],
+      "timeFrom": "1h",
+      "title": "Amount of Servers",
+      "transform": "table",
+      "type": "table"
+    },
+    {
+      "cards": {
+        "cardPadding": null,
+        "cardRound": null
+      },
+      "color": {
+        "cardColor": "#b4ff00",
+        "colorScale": "sqrt",
+        "colorScheme": "interpolateSpectral",
+        "exponent": 0.5,
+        "mode": "spectrum"
+      },
+      "dataFormat": "tsbuckets",
+      "datasource": "${DS_PROMETHEUS}",
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 4
+      },
+      "heatmap": {},
+      "highlightCards": true,
+      "id": 12,
+      "legend": {
+        "show": true
+      },
+      "links": [],
+      "targets": [
+        {
+          "expr": "node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{instance}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Metric series over time (Gb)",
+      "tooltip": {
+        "show": true,
+        "showHistogram": false
+      },
+      "type": "heatmap",
+      "xAxis": {
+        "show": true
+      },
+      "xBucketNumber": null,
+      "xBucketSize": "",
+      "yAxis": {
+        "decimals": 0,
+        "format": "gbytes",
+        "logBase": 1,
+        "max": null,
+        "min": null,
+        "show": true,
+        "splitFactor": null
+      },
+      "yBucketBound": "auto",
+      "yBucketNumber": null,
+      "yBucketSize": 1
+    },
+    {
+      "cards": {
+        "cardPadding": null,
+        "cardRound": null
+      },
+      "color": {
+        "cardColor": "#b4ff00",
+        "colorScale": "sqrt",
+        "colorScheme": "interpolateOranges",
+        "exponent": 0.5,
+        "mode": "spectrum"
+      },
+      "dataFormat": "timeseries",
+      "datasource": "${DS_PROMETHEUS}",
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 4
+      },
+      "heatmap": {},
+      "highlightCards": true,
+      "id": 4,
+      "legend": {
+        "show": true
+      },
+      "links": [],
+      "targets": [
+        {
+          "expr": "node_memory_MemTotal{instance=~\"$host\"}/1024/1024/1024",
+          "format": "heatmap",
+          "intervalFactor": 1,
+          "legendFormat": "{{instance}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Heatmap",
+      "tooltip": {
+        "show": true,
+        "showHistogram": false
+      },
+      "tooltipDecimals": null,
+      "type": "heatmap",
+      "xAxis": {
+        "show": true
+      },
+      "xBucketNumber": null,
+      "xBucketSize": "",
+      "yAxis": {
+        "decimals": 0,
+        "format": "gbytes",
+        "logBase": 1,
+        "max": null,
+        "min": "0",
+        "show": true,
+        "splitFactor": null
+      },
+      "yBucketBound": "auto",
+      "yBucketNumber": null,
+      "yBucketSize": null
+    },
+    {
+      "columns": [],
+      "datasource": "${DS_PROMETHEUS}",
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 13
+      },
+      "id": 2,
+      "links": [],
+      "pageSize": null,
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 3,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "hidden"
+        },
+        {
+          "alias": "Memory",
+          "colorMode": "cell",
+          "colors": [
+            "#5195ce",
+            "#1f78c1",
+            "#0a437c"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": null,
+          "mappingType": 1,
+          "pattern": "Value",
+          "thresholds": [
+            "5147068928",
+            "10189341696"
+          ],
+          "type": "number",
+          "unit": "bytes"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "__name__",
+          "thresholds": [],
+          "type": "hidden",
+          "unit": "short"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "aws_region",
+          "thresholds": [],
+          "type": "hidden",
+          "unit": "short"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "job",
+          "thresholds": [],
+          "type": "hidden",
+          "unit": "short"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "region",
+          "thresholds": [],
+          "type": "hidden",
+          "unit": "short"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 2,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "expr": "node_memory_MemTotal{instance=~\"$host\"}",
+          "format": "table",
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{instance}}",
+          "refId": "B"
+        }
+      ],
+      "title": "Memory",
+      "transform": "table",
+      "type": "table"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 21
+      },
+      "id": 6,
+      "panels": [
+        {
+          "columns": [],
+          "datasource": null,
+          "fontSize": "150%",
+          "gridPos": {
+            "h": 3,
+            "w": 24,
+            "x": 0,
+            "y": 2
+          },
+          "id": 19,
+          "links": [],
+          "pageSize": null,
+          "scroll": true,
+          "showHeader": true,
+          "sort": {
+            "col": 0,
+            "desc": true
+          },
+          "styles": [
+            {
+              "alias": "Time",
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "pattern": "Time",
+              "type": "hidden"
+            },
+            {
+              "alias": "",
+              "colorMode": null,
+              "colors": [
+                "rgba(245, 54, 54, 0.9)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(50, 172, 45, 0.97)"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 2,
+              "mappingType": 1,
+              "pattern": "",
+              "thresholds": [],
+              "type": "number",
+              "unit": "short"
+            },
+            {
+              "alias": "1 Core",
+              "colorMode": "cell",
+              "colors": [
+                "#5195ce",
+                "#1f78c1",
+                "#0a437c"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 0,
+              "mappingType": 1,
+              "pattern": "Value #A",
+              "thresholds": [
+                "4",
+                "8"
+              ],
+              "type": "number",
+              "unit": "short"
+            },
+            {
+              "alias": "2 Cores",
+              "colorMode": "cell",
+              "colors": [
+                "#5195ce",
+                "#1f78c1",
+                "#0a437c"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 0,
+              "mappingType": 1,
+              "pattern": "Value #B",
+              "thresholds": [
+                "4",
+                "8"
+              ],
+              "type": "number",
+              "unit": "short"
+            },
+            {
+              "alias": "4 Cores",
+              "colorMode": "cell",
+              "colors": [
+                "#5195ce",
+                "#1f78c1",
+                "#0a437c"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 0,
+              "mappingType": 1,
+              "pattern": "Value #C",
+              "thresholds": [
+                "4",
+                "8"
+              ],
+              "type": "number",
+              "unit": "short"
+            },
+            {
+              "alias": "8 Cores",
+              "colorMode": "cell",
+              "colors": [
+                "#5195ce",
+                "#1f78c1",
+                "#0a437c"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 0,
+              "mappingType": 1,
+              "pattern": "Value #D",
+              "thresholds": [
+                "4",
+                "8"
+              ],
+              "type": "number",
+              "unit": "short"
+            },
+            {
+              "alias": "",
+              "colorMode": null,
+              "colors": [
+                "rgba(245, 54, 54, 0.9)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(50, 172, 45, 0.97)"
+              ],
+              "decimals": 2,
+              "pattern": "/.*/",
+              "thresholds": [],
+              "type": "number",
+              "unit": "short"
+            }
+          ],
+          "targets": [
+            {
+              "expr": "count((count by(instance) (node_cpu{instance=~\"$host\",mode=~\"user\"}) or sum by (instance) (rdsosmetrics_General_numVCPUs{instance=~\"$host\"} or up * 0)) < 2)",
+              "format": "table",
+              "hide": false,
+              "instant": true,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "1 Core",
+              "refId": "A"
+            },
+            {
+              "expr": "count( \n(count by(instance) (node_cpu{instance=~\"$host\",mode=~\"user\"}) or sum by (instance) (rdsosmetrics_General_numVCPUs{instance=~\"$host\"} or up * 0)) > 1\nand \n(count by(instance) (node_cpu{instance=~\"$host\",mode=~\"user\"}) or sum by (instance) (rdsosmetrics_General_numVCPUs{instance=~\"$host\"} or up * 0)) < 3\n)",
+              "format": "table",
+              "hide": false,
+              "instant": true,
+              "intervalFactor": 1,
+              "legendFormat": "2 Cores",
+              "refId": "B"
+            },
+            {
+              "expr": "count( \n(count by(instance) (node_cpu{instance=~\"$host\",mode=~\"user\"}) or sum by (instance) (rdsosmetrics_General_numVCPUs{instance=~\"$host\"} or up * 0)) > 3\nand \n(count by(instance) (node_cpu{instance=~\"$host\",mode=~\"user\"}) or sum by (instance) (rdsosmetrics_General_numVCPUs{instance=~\"$host\"} or up * 0)) < 5\n)",
+              "format": "table",
+              "hide": false,
+              "instant": true,
+              "intervalFactor": 1,
+              "legendFormat": "4 Cores",
+              "refId": "C"
+            },
+            {
+              "expr": "count( \n(count by(instance) (node_cpu{instance=~\"$host\",mode=~\"user\"}) or sum by (instance) (rdsosmetrics_General_numVCPUs{instance=~\"$host\"} or up * 0)) > 4\nand \n(count by(instance) (node_cpu{instance=~\"$host\",mode=~\"user\"}) or sum by (instance) (rdsosmetrics_General_numVCPUs{instance=~\"$host\"} or up * 0)) < 9\n)",
+              "format": "table",
+              "hide": false,
+              "instant": true,
+              "intervalFactor": 1,
+              "legendFormat": "8 Cores",
+              "refId": "D"
+            }
+          ],
+          "title": "CPU Cores",
+          "transform": "table",
+          "type": "table"
+        },
+        {
+          "cards": {
+            "cardPadding": null,
+            "cardRound": null
+          },
+          "color": {
+            "cardColor": "#b4ff00",
+            "colorScale": "sqrt",
+            "colorScheme": "interpolateSpectral",
+            "exponent": 0.5,
+            "mode": "spectrum"
+          },
+          "dataFormat": "tsbuckets",
+          "datasource": null,
+          "gridPos": {
+            "h": 9,
+            "w": 12,
+            "x": 0,
+            "y": 5
+          },
+          "heatmap": {},
+          "highlightCards": true,
+          "id": 13,
+          "legend": {
+            "show": true
+          },
+          "links": [],
+          "targets": [
+            {
+              "expr": "(count by(instance) (node_cpu{instance=~\"$host\",mode=~\"user\"}) or sum by (instance) (rdsosmetrics_General_numVCPUs{instance=~\"$host\"} or up * 0)) > 0",
+              "format": "time_series",
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "{{instance}}",
+              "refId": "A"
+            }
+          ],
+          "title": "Metric series over time",
+          "tooltip": {
+            "show": true,
+            "showHistogram": false
+          },
+          "type": "heatmap",
+          "xAxis": {
+            "show": true
+          },
+          "xBucketNumber": null,
+          "xBucketSize": "",
+          "yAxis": {
+            "decimals": null,
+            "format": "short",
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true,
+            "splitFactor": null
+          },
+          "yBucketBound": "auto",
+          "yBucketNumber": null,
+          "yBucketSize": 1
+        },
+        {
+          "cards": {
+            "cardPadding": null,
+            "cardRound": null
+          },
+          "color": {
+            "cardColor": "#b4ff00",
+            "colorScale": "sqrt",
+            "colorScheme": "interpolateOranges",
+            "exponent": 0.5,
+            "mode": "spectrum"
+          },
+          "dataFormat": "timeseries",
+          "datasource": null,
+          "gridPos": {
+            "h": 9,
+            "w": 12,
+            "x": 12,
+            "y": 5
+          },
+          "heatmap": {},
+          "highlightCards": true,
+          "id": 15,
+          "legend": {
+            "show": true
+          },
+          "links": [],
+          "targets": [
+            {
+              "expr": "count by(instance) (node_cpu{instance=~\"$host\",mode=~\"user\"}) or sum by (instance) (rdsosmetrics_General_numVCPUs{instance=~\"$host\"} or up * 0)",
+              "format": "heatmap",
+              "hide": false,
+              "intervalFactor": 1,
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "title": "Heatmap",
+          "tooltip": {
+            "show": true,
+            "showHistogram": false
+          },
+          "type": "heatmap",
+          "xAxis": {
+            "show": true
+          },
+          "xBucketNumber": null,
+          "xBucketSize": null,
+          "yAxis": {
+            "decimals": null,
+            "format": "short",
+            "logBase": 1,
+            "max": null,
+            "min": "0",
+            "show": true,
+            "splitFactor": null
+          },
+          "yBucketBound": "auto",
+          "yBucketNumber": null,
+          "yBucketSize": null
+        },
+        {
+          "columns": [],
+          "datasource": null,
+          "fontSize": "100%",
+          "gridPos": {
+            "h": 8,
+            "w": 24,
+            "x": 0,
+            "y": 14
+          },
+          "id": 14,
+          "links": [],
+          "pageSize": null,
+          "scroll": true,
+          "showHeader": true,
+          "sort": {
+            "col": 1,
+            "desc": true
+          },
+          "styles": [
+            {
+              "alias": "Time",
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "pattern": "Time",
+              "type": "hidden"
+            },
+            {
+              "alias": "CPU",
+              "colorMode": "cell",
+              "colors": [
+                "#5195ce",
+                "#1f78c1",
+                "#0a437c"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 0,
+              "mappingType": 1,
+              "pattern": "Value",
+              "thresholds": [
+                "4",
+                "8"
+              ],
+              "type": "number",
+              "unit": "short"
+            },
+            {
+              "alias": "",
+              "colorMode": null,
+              "colors": [
+                "rgba(245, 54, 54, 0.9)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(50, 172, 45, 0.97)"
+              ],
+              "decimals": 2,
+              "pattern": "/.*/",
+              "thresholds": [],
+              "type": "number",
+              "unit": "short"
+            }
+          ],
+          "targets": [
+            {
+              "expr": "(count by(instance) (node_cpu{instance=~\"$host\",mode=~\"user\"}) or sum by (instance) (rdsosmetrics_General_numVCPUs{instance=~\"$host\"} or up * 0)) > 0 ",
+              "format": "table",
+              "instant": true,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "",
+              "refId": "B"
+            }
+          ],
+          "title": "CPU",
+          "transform": "table",
+          "type": "table"
+        }
+      ],
+      "title": "Distribution by CPU",
+      "type": "row"
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 16,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "${DS_PROMETHEUS}",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Host",
+        "multi": true,
+        "name": "host",
+        "options": [],
+        "query": "label_values({__name__=~\"node_load1|process_start_time_seconds\"}, instance)",
+        "refresh": 1,
+        "regex": "",
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-24h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "",
+  "title": "Servers Inventory",
+  "uid": "869FN3Uiz",
+  "version": 31,
+  "description": "The dashboards allows to see amount of monitored servers. Instances are sorted by memory size and CPU Cores."
+}

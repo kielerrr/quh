@@ -1,0 +1,22 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+fastapi = "==0.68.1"
+uvicorn = "==0.15.0"
+pydantic = "==1.8.2"
+requests = "==2.26.0"
+python-dotenv = "*"
+beautifulsoup4 = "*"
+aiofiles = "*"
+starlette-prometheus = "*"
+Jinja2 = "*"
+SQLAlchemy = "==1.4.25"
+Pillow = "==8.3.2"
+
+[dev-packages]
+
+[requires]
+python_version = "3.9"

@@ -1,0 +1,195 @@
+---
+additionalArguments:
+  - '--api.insecure=true'
+  - '--certificatesresolvers.letsencrypt.acme.email=cs@{{{{ root_domain }}}}'
+  - '--certificatesresolvers.letsencrypt.acme.storage=/data/acme.json'
+  - '--certificatesresolvers.letsencrypt.acme.caServer=https://acme-v02.api.letsencrypt.org/directory'
+  - '--certificatesresolvers.letsencrypt.acme.dnschallenge.provider={{{{ dns_challenge_provider }}}}'
+  - '--certificatesresolvers.letsencrypt.acme.tlschallenge=true'
+  - '--certificatesresolvers.letsencrypt.acme.httpchallenge=true'
+  - '--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web'
+  - '--metrics.prometheus=true'
+  - '--metrics.prometheus.addServicesLabels=true'
+  - '--metrics.prometheus.addEntryPointsLabels=true'
+  - '--metrics.prometheus.addrouterslabels=true'
+  - '--metrics.prometheus.entryPoint=metrics'
+  - '--entryPoints.metrics.address=:9100'
+
+additionalVolumeMounts: [ ]
+affinity: { }
+autoscaling:
+  enabled: false
+deployment:
+  additionalContainers: [ ]
+  annotations: { }
+  dnsPolicy: ClusterFirstWithHostNet
+  enabled:   true
+  imagePullSecrets:
+    - name: {{{{ image_pull_secret_name }}}}
+  initContainers:
+    - name:  volume-permissions
+      image: busybox:1.31.1
+      #      if you run into letsencrypt problems, make sure /data/acme.json in traefik pod is 600.
+      #      also try deleting /data/acme.json and restarting
+      command: [ "sh", "-c", "chmod -Rv 600 /data/*" ]
+      volumeMounts:
+        - name:      traefik
+          mountPath: /data
+  
+  kind:      Deployment
+  labels: { }
+  podAnnotations: { }
+  podLabels: { }
+  replicas:  1
+  volumeMounts:
+    - name: traefik
+    - mountPath: /data
+env:
+  - name: DO_AUTH_TOKEN
+    valueFrom:
+      secretKeyRef:
+        key:  DO_AUTH_TOKEN
+        name: do-auth-token
+envFrom: [ ]
+experimental:
+  kubernetesGateway:
+    appLabelSelector: traefik
+    certificates: [ ]
+    enabled:          false
+  plugins:
+    enabled: false
+globalArguments:
+  - '--global.checknewversion'
+  - '--global.sendanonymoususage'
+hostNetwork:       false
+image:
+  name:       traefik
+  pullPolicy: IfNotPresent
+  tag:        ''
+ingressClass:
+  enabled:            false
+  fallbackApiVersion: ''
+  isDefaultClass:     false
+ingressRoute:
+  dashboard:
+    annotations: { }
+    enabled: true
+    labels: { }
+logs:
+  access:
+    enabled: true
+    format:  json
+    fields:
+      general:
+        defaultmode: keep
+        names: { }
+      headers:
+        defaultmode: keep
+        names: { }
+    filters: { }
+  general:
+    #    level: INFO
+    level: TRACE
+metrics:
+  prometheus:
+    enabled:              true
+    addServicesLabels:    true
+    addEntryPointsLabels: true
+    addrouterslabels:     true
+    entryPoint:           metrics
+nodeSelector: { }
+persistence:
+  accessMode: ReadWriteOnce
+  annotations: { }
+  size: {{{{ traefik_pvc_size }}}}
+  enabled:    true
+  name:       traefik
+  storageClass: {{{{ storage_class }}}}
+  path:       /data
+pilot:
+  enabled: false
+  token:   ""
+podDisruptionBudget:
+  enabled: false
+podSecurityContext:
+  fsGroup: 65532
+podSecurityPolicy:
+  enabled: false
+ports:
+  metrics:
+    expose:      true
+    exposedPort: 9100
+    port:        9100
+    protocol:    TCP
+  traefik:
+    expose:      false
+    exposedPort: 9000
+    port:        9000
+    protocol:    TCP
+  sftp:
+    expose:      true
+    exposedPort: 22
+    port:        2222
+    protocol:    TCP
+  web:
+    expose:       true
+    exposedPort:  80
+    port:         8000
+    protocol:     TCP
+    redirections: entryPoint
+  websecure:
+    expose:      true
+    exposedPort: 443
+    port:        8443
+    protocol:    TCP
+    tls:
+      certResolver: letsencrypt
+      enabled:      true
+      options:      ''
+priorityClassName: ''
+providers:
+  kubernetesCRD:
+    allowCrossNamespace: true
+    enabled:             true
+    namespaces: [ ]
+  kubernetesIngress:
+    enabled: true
+    namespaces: [ ]
+    publishedService:
+      enabled: false
+rbac:
+  enabled:    true
+  namespaced: false
+resources: { }
+rollingUpdate:
+  maxSurge:       1
+  maxUnavailable: 1
+securityContext:
+  capabilities:
+    drop:
+      - ALL
+  readOnlyRootFilesystem: true
+  runAsGroup:             65532
+  runAsNonRoot:           true
+  runAsUser:              65532
+service:
+  annotations:
+    service.beta.kubernetes.io/do-loadbalancer-name: {{{{ load_balancer_name }}}}
+    service.beta.kubernetes.io/do-loadbalancer-hostname: {{{{ load_balancer_name }}}}
+    kubernetes.digitalocean.com/load-balancer-id: {{{{ load_balancer_name }}}}
+    service.beta.kubernetes.io/do-loadbalancer-tag: {{{{ load_balancer_name }}}}
+  #    service.kubernetes.io/do-loadbalancer-disown:        "true"
+  annotationsTCP: { }
+  annotationsUDP: { }
+  enabled: true
+  externalIPs:
+    - {{{{ external_ip }}}}
+  labels: { }
+  loadBalancerSourceRanges: [ ]
+  spec: { }
+  type:    LoadBalancer
+serviceAccount:
+  name: ''
+serviceAccountAnnotations: { }
+tolerations: [ ]
+volumes: [ ]
