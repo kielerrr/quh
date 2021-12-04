@@ -31,38 +31,34 @@ Run
 
 Run checks and tweak anything that may be stuck.
 
-![Run setup commands](how-to-make-it-happen\5.png)
-![Final cluster resource map](how-to-make-it-happen\9.png)
-![Frontend up](how-to-make-it-happen\17.png)
-![Backend ups](how-to-make-it-happen\15.png)
-![Backend ups](how-to-make-it-happen\18.png)
-![Backend ups](how-to-make-it-happen\7.png)
-![Backend ups](how-to-make-it-happen\19.png)
-![Backend ups](how-to-make-it-happen\10.png)
-![Backend ups](how-to-make-it-happen\4.png)
+![Run setup commands](how-to-make-it-happen/5.png)
+![Final cluster resource map](how-to-make-it-happen/9.png)
+![Frontend up](how-to-make-it-happen17.png)
+![Backend ups](how-to-make-it-happen/15.png)
+![Backend ups](how-to-make-it-happen/18.png)
+![Backend ups](how-to-make-it-happen/7.png)
+![Backend ups](how-to-make-it-happen/19.png)
+![Backend ups](how-to-make-it-happen/10.png)
+![Backend ups](how-to-make-it-happen/4.png)
 ###Run this if running into sftp issues.
-![Backend ups](how-to-make-it-happen\16.png)
+![Backend ups](how-to-make-it-happen/16.png)
 
 ###App1 is an example app. Both the frontend and backend are running in  their own container and wrapped in a deployment. Logs are auto captured and delivered to Loki and Prometheus and then readable live in Grafana.
-![Backend ups](how-to-make-it-happen\14.png)
-![Backend ups](how-to-make-it-happen\13.png)
+![Backend ups](how-to-make-it-happen/14.png)
+![Backend ups](how-to-make-it-happen/13.png)
 
 ###Setup an SFTP connection to upload source files.
-![Backend ups](how-to-make-it-happen\12.png)
+![Backend ups](how-to-make-it-happen/12.png)
 
 ###This will go green when source files are loaded in correct directories with correct permissions.
-![Backend ups](how-to-make-it-happen\11.png)
+![Backend ups](how-to-make-it-happen/11.png)
 
 ###If using Digital Ocean: Point domain nameservers to ns1.digitalocean.com, ns2.digitalocean.com. After you have deployed the cluster, Traefik will automatically create a Loadbalancer and a Volume
-![Backend ups](how-to-make-it-happen\1.png)
+![Backend ups](how-to-make-it-happen/1.png)
 
 ###NYC1 is recomended. Note where to put node pool and name in  `cluster_vars`
-![Backend ups](how-to-make-it-happen\2.png)
-![Backend ups](how-to-make-it-happen\3.png)
+![Backend ups](how-to-make-it-happen/2.png)
+![Backend ups](how-to-make-it-happen/3.png)
 
 ###When the cluster is up and the load balancer is ready, use the ip address of your new load balancer as the value for domains A records.
-![Backend ups](how-to-make-it-happen\6.png)
-
-
-                                                         
-
+![Backend ups](how-to-make-it-happen/6.png)
