@@ -9,6 +9,9 @@ Starter Kubernetes clusters with infrastructure, routing and a front/back app wi
 - Logs GUI: grafana
 
 
+![Final cluster resource map](how-to-make-it-happen/9.png)
+
+
 Defaults are configured to deploy on Digital Ocean. To deploy on another server or minikube, adjust storageClass and privateVolumes to connect using their respective values. Paths and .bat files are Windows format but can be easily adjusted to linux paths and shell script. An attempt is made to include screenshots of issues that may occur with points of importance highlighted.
 
 Source files are stored in a detachable volume which is accessible with built in sftp server and ssh keys.   The benefit here is if you run into any issues, *it is safe to destroy the entire cluster,  and rebuild it fresh everytime* with configuration tweaks. Do not delete the detachable Volume with source files.
@@ -23,7 +26,7 @@ If using Digital Ocean, create a cluster and set kubectl to use the context for 
 
 Run
 
-    # python write_cluster_vars.py
+    python write_cluster_vars.py
 
 Run
 
@@ -32,7 +35,6 @@ Run
 Run checks and tweak anything that may be stuck.
 
 ![Run setup commands](how-to-make-it-happen/5.png)
-![Final cluster resource map](how-to-make-it-happen/9.png)
 ![Frontend up](how-to-make-it-happen/17.png)
 ![Backend ups](how-to-make-it-happen/15.png)
 ![Backend ups](how-to-make-it-happen/18.png)
