@@ -1,0 +1,79 @@
+apiVersion: apps/v1
+kind:       Deployment
+metadata:
+  name: {{ include "geocode.fullname" . }}
+  labels:
+  {{- include "geocode.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+  {{- include "geocode.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+      {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+    {{- include "geocode.selectorLabels" . | nindent 8 }}
+    spec:
+      imagePullSecrets:
+        - name: {{ .Values.imagePullSecret }}
+      serviceAccountName: {{ include "geocode.serviceAccountName" . }}
+      securityContext:
+      {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      restartPolicy: Always
+      volumes:
+        - name: sftp-sftp-server-data
+          persistentVolumeClaim:
+            claimName: sftp-sftp-server-data
+      containers:
+        - name: {{ .Values.back.name }}
+          env:
+            - name:  SECRET_KEY
+              value: ""
+          image:           "{{ .Values.back.image }}:{{ .Values.back.tag }}"
+          ports:
+            - name:          back
+              containerPort: 5000
+              protocol:      TCP
+          imagePullPolicy: IfNotPresent
+          readinessProbe:
+            httpGet:
+              path: /docs
+              port: back
+          resources:
+          {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            - mountPath: /home/sftp
+              name:      sftp-sftp-server-data
+        - name: {{ .Values.front.name }}
+          env:
+            - name:  SECRET_KEY
+              value: ""
+          image: "{{ .Values.front.image }}:{{ .Values.front.tag }}"
+          ports:
+            - name:          front
+              containerPort: 3400
+              protocol:      TCP
+          imagePullPolicy: IfNotPresent
+          resources:
+          {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            - mountPath: /home/sftp
+              name:      sftp-sftp-server-data
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+      {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+      {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+  {{- toYaml . | nindent 8 }}
+  {{- end }}

@@ -10,17 +10,16 @@ service:
   port:    22
 sftpConfig:
   username:  sftp
-#  password:  {{{{ sftp_login_password }}}}
   encrypted: true
-  uid:       {{{{ sftp_uid }}}}
-  gid:       {{{{ sftp_gid }}}}
+  uid:       1000
+  gid:       100
   hostKeys:
     secret:    sftp-private-key
     namespace: default
     keys:
       - key
   authorizedKeys:
-    - "{{{{ sftp_login_public_key }}}}"
+    - "AAAAB3NzaC1yc2EAAAADAQABAAAAgQCnF0poOWxSf+7z2XlbOzqUSakkrB8RFRa1wURjbWow3ETzOQzxcqAKuwb7ULSuC7usDl3VMgpWtpmBZyZpYJTkQ8w5PhdtJIR6PiDQw7Mq0X5bAO+GiT9PF+SEaBKSYsS730KzSF3xKHOh/swHOLhIk0HeD84ijGqieaMstRB5/Q=="
 debug:
   enabled: true
   image:
@@ -32,8 +31,8 @@ persistentVolume:
   annotations: { }
   accessModes:
     - ReadWriteOnce
-  size:         {{{{ sftp_size }}}}
-  storageClass: {{{{ storage_class }}}}
+  size:         25Gi
+  storageClass: do-block-storage
   subPath:      ""
 vxlanController:
   enabled:       false

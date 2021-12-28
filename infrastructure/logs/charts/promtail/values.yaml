@@ -31,7 +31,7 @@ image:
 
 # -- Image pull secrets for Docker images
 imagePullSecrets:
-  - name: {{{{ image_pull_secret_name }}}}
+  - name: docker-hub
 
 # -- Annotations for the DaemonSet
 annotations: { }

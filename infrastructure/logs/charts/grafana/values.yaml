@@ -275,7 +275,7 @@ persistence:
   # storageClassName: default
   accessModes:
     - ReadWriteOnce
-  size: {{{{ grafana_volume_size }}}}
+  size: 10Gi
   # annotations: {}
   finalizers:
     - kubernetes.io/pvc-protection
@@ -322,7 +322,7 @@ initChownData:
 
 # Administrator credentials when not using an existing secret (see below)
 adminUser: admin
-adminPassword: {{{{ grafana_password_plain }}}}
+adminPassword: iloveyou
 
 ## Use an existing secret for the admin user.
 admin:

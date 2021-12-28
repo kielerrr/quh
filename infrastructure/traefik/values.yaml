@@ -1,10 +1,10 @@
 ---
 additionalArguments:
   - '--api.insecure=true'
-  - '--certificatesresolvers.letsencrypt.acme.email=cs@{{{{ root_domain }}}}'
+  - '--certificatesresolvers.letsencrypt.acme.email=cs@quh.io'
   - '--certificatesresolvers.letsencrypt.acme.storage=/data/acme.json'
   - '--certificatesresolvers.letsencrypt.acme.caServer=https://acme-v02.api.letsencrypt.org/directory'
-  - '--certificatesresolvers.letsencrypt.acme.dnschallenge.provider={{{{ dns_challenge_provider }}}}'
+  - '--certificatesresolvers.letsencrypt.acme.dnschallenge.provider=digitalocean'
   - '--certificatesresolvers.letsencrypt.acme.tlschallenge=true'
   - '--certificatesresolvers.letsencrypt.acme.httpchallenge=true'
   - '--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web'
@@ -25,7 +25,7 @@ deployment:
   dnsPolicy: ClusterFirstWithHostNet
   enabled:   true
   imagePullSecrets:
-    - name: {{{{ image_pull_secret_name }}}}
+    - name: docker-hub
   initContainers:
     - name:  volume-permissions
       image: busybox:1.31.1
@@ -101,10 +101,10 @@ nodeSelector: { }
 persistence:
   accessMode: ReadWriteOnce
   annotations: { }
-  size: {{{{ traefik_pvc_size }}}}
+  size: 5Gi
   enabled:    true
   name:       traefik
-  storageClass: {{{{ storage_class }}}}
+  storageClass: do-block-storage
   path:       /data
 pilot:
   enabled: false
@@ -174,16 +174,16 @@ securityContext:
   runAsUser:              65532
 service:
   annotations:
-    service.beta.kubernetes.io/do-loadbalancer-name: {{{{ load_balancer_name }}}}
-    service.beta.kubernetes.io/do-loadbalancer-hostname: {{{{ load_balancer_name }}}}
-    kubernetes.digitalocean.com/load-balancer-id: {{{{ load_balancer_name }}}}
-    service.beta.kubernetes.io/do-loadbalancer-tag: {{{{ load_balancer_name }}}}
+    service.beta.kubernetes.io/do-loadbalancer-name: quh
+    service.beta.kubernetes.io/do-loadbalancer-hostname: quh
+    kubernetes.digitalocean.com/load-balancer-id: quh
+    service.beta.kubernetes.io/do-loadbalancer-tag: quh
   #    service.kubernetes.io/do-loadbalancer-disown:        "true"
   annotationsTCP: { }
   annotationsUDP: { }
   enabled: true
   externalIPs:
-    - {{{{ external_ip }}}}
+    - 1.2.3.4
   labels: { }
   loadBalancerSourceRanges: [ ]
   spec: { }

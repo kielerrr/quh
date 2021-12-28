@@ -43,7 +43,7 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`{{{{ root_domain }}}}`)
+    - match: Host(`quh.io`)
       middlewares:
         - name: webauth-secret
         - name: to-https
@@ -60,7 +60,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`{{{{ root_domain }}}}`)
+    - match: Host(`quh.io`)
       middlewares:
         - name: webauth-secret
       kind:  Rule

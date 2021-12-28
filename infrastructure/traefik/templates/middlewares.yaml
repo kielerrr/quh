@@ -21,8 +21,8 @@ metadata:
   name: ratelimit
 spec:
   rateLimit:
-    average: {{{{ rate_limit_avg }}}}
-    burst:   {{{{ rate_limit_burst }}}}
+    average: 100
+    burst:   500
 # ---
 {{/*apiVersion: traefik.containo.us/v1alpha1*/}}
 {{/*kind:       Middleware*/}}

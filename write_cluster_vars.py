@@ -9,15 +9,15 @@ import zipfile
 
 cluster_vars = {
 		"image_pull_secret_name"         : "docker-hub",
-		"image_pull_secret"              : "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX==",
+		"image_pull_secret"              : "cab2a40e-f872-48f5-998f-4eacdee63e6c",
 		"root_domain"                    : "quh.io",  # modify according to your domain/cluster name
 		"load_balancer_name"             : "quh",  # modify according to your domain/cluster name
 		"k8s_cluster_name"               : "quh",  # modify according to your domain/cluster name
 		"k8s_context"                    : "do-nyc1-quh",  # modify according to your domain/cluster name
-		"app1_name"                      : "app1",
+		"app1_name"                      : "geocode",
 		"sftp_k8s_pvc_name"              : "sftp-sftp-server-data",
 		"docker_hub_registry"            : "kielerrr",  # use your dockerhub registry
-		"k8s_root_dir"                   : "C:\\Users\\user_account\\.kube",
+		"k8s_root_dir"                   : "C:\\Users\\luser\\.kube",
 		"sftp_login_public_key"          : "AAAAB3NzaC1yc2EAAAADAQABAAAAgQCnF0poOWxSf+7z2XlbOzqUSakkrB8RFRa1wURjbWow3ETzOQzxcqAKuwb7ULSuC7usDl3VMgpWtpmBZyZpYJTkQ8w5PhdtJIR6PiDQw7Mq0X5bAO+GiT9PF+SEaBKSYsS730KzSF3xKHOh/swHOLhIk0HeD84ijGqieaMstRB5/Q==",
 		"sftp_private_key_base64_encoded": "LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlDWEFJQkFBS0JnUUNuRjBwb09XeFNmKzd6MlhsYk96cVVTYWtrckI4UkZSYTF3VVJqYldvdzNFVHpPUXp4CmNxQUt1d2I3VUxTdUM3dXNEbDNWTWdwV3RwbUJaeVpwWUpUa1E4dzVQaGR0SklSNlBpRFF3N01xMFg1YkFPK0cKaVQ5UEYrU0VhQktTWXNTNzMwS3pTRjN4S0hPaC9zd0hPTGhJazBIZUQ4NGlqR3FpZWFNc3RSQjUvUUlEQVFBQgpBb0dBRmhBTHVaNVhjTDlHd0hrSFBxWWY4b09WYTJ1MHdHOHQ2L3JrZWxKd3NwbnJHc2grTG9WcG4zRVpsMmFOCkxPd01zRWZIV1FhOStid3JvYndLaE9DRldEV04rMFZidmRwb0l0bHJMNTFaenNRVVZuTXF3L2pqZ0U0MGdrVzUKZk4rbmx4SjRnVnFHSnhkSGljQ0tmYU5PalFzbG1NZVNKUVppdW8wc3U3WGtoK3NDUVFDMXRzM2FTT0UxSTQ0TgpRdVRra0JUVWQ4K25yR3RBWTk0cG5UbnBrNldJYXpmc3dKT3djeXViRWNNL3RudkN3by8xaHdUcWNsT2lkbzBqCmYyZWZRMlNQQWtFQTYyWWRCelhjUTdFT2RpNEVlQm13a0tUSS9FNEJBbzJTWmZheEVWTkpha251M0NRVlBRV1oKdGpCVTdnYWRXWlZ5UnBaNlJGbDM1TFd0MDdaOS9oVTJzd0pBYTVFU0hIUmw5RG5lM2hUS1FFN1dOY3ZTdmRRQQpEVGJSRFZ0SUsrKzkzcHB4bVpHS0c3cWhob01tVEhIdW95VGZhUjJMR0dtaS9wb2xCRzFuM3N4Ykd3SkFQa0hxCmlYNm9POHIzTFRCc2hDc2ZOSkl3aWZKRGVCNWpTczVjOUYwWHZLSERKN3Z2VmcxR0l4WlRVQVMxMXZ5Y2xhaTAKdTZFQ0FaNC9WQkFlOEhWQjJ3SkJBSldrZ1dOK1ZTaktLZDV5RERub0RSWGZnSUt6d1VBeVI2VU5nUW1XUWIwTwpXQm5GL2IrMlg4dlhtZXI1QnVMdHRoczlBMDJIeC94M3FxTEpxL1dSS2lRPQotLS0tLUVORCBSU0EgUFJJVkFURSBLRVktLS0tLQ==",
 		"sftp_size"                      : "25Gi",
@@ -29,7 +29,7 @@ cluster_vars = {
 		"traefik_pvc_size"               : "5Gi",
 		"webauth_secret"                 : "YWRtaW46JGFwcjEkMmVpczQzbnUkQ0w4YXlMRlMwMExkWEZLbkdyRzI3Lw==",  # admin/iloveyou
 		"do_auth_token_name"             : "do-auth-token",
-		"do_auth_token_value"            : "aWxvdmV5b3U=",  # this is a dummy value, if using digital ocean, add this to connecct lb and volumes
+		"do_auth_token_value"            : "cab2a40e-f872-48f5-998f-4eacdee63e6c",  # this is a dummy value, if using digital ocean, add this to connecct lb and volumes
 		"rate_limit_avg"                 : "100",
 		"rate_limit_burst"               : "500",
 		"grafana_user"                   : "YWRtaW4==",  # admin

@@ -8,7 +8,7 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`grafana.{{{{ root_domain }}}}`)
+    - match: Host(`grafana.quh.io`)
       middlewares:
         - name:      webauth-secret
           namespace: default
@@ -29,7 +29,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`grafana.{{{{ root_domain }}}}`)
+    - match: Host(`grafana.quh.io`)
       kind:  Rule
       services:
         - name: logs-grafana
@@ -47,7 +47,7 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`loki.{{{{ root_domain }}}}`) # && PathPrefix(`/loki`)
+    - match: Host(`loki.quh.io`) # && PathPrefix(`/loki`)
       kind:  Rule
       services:
         - name: logs-loki
@@ -63,7 +63,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`loki.{{{{ root_domain }}}}`) # && PathPrefix(`/loki`)
+    - match: Host(`loki.quh.io`) # && PathPrefix(`/loki`)
       kind:  Rule
       services:
         - name: logs-loki
@@ -82,7 +82,7 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`prom.{{{{ root_domain }}}}`)
+    - match: Host(`prom.quh.io`)
       middlewares:
         - name:      webauth-secret
           namespace: default
@@ -104,7 +104,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`prom.{{{{ root_domain }}}}`)
+    - match: Host(`prom.quh.io`)
       kind:  Rule
       services:
         - name: logs-prometheus-server

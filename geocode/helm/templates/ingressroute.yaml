@@ -1,0 +1,83 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind:       IngressRoute
+metadata:
+  name: front
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`front.geocode.quh.io`)
+      kind:  Rule
+      middlewares:
+        - name: webauth-secret
+        - name: to-https
+        - name: ratelimit
+      #        - name: cors-header
+      services:
+        - name: front
+          kind: Service
+          port: 3400
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind:       IngressRoute
+metadata:
+  name: frontsecure
+spec:
+  entryPoints:
+    - websecure
+  tls:
+    certResolver: letsencrypt
+  routes:
+    - match: Host(`front.geocode.quh.io`)
+      kind:  Rule
+      middlewares:
+        - name: webauth-secret
+        - name: ratelimit
+      #        - name: cors-header
+      services:
+        - name: front
+          kind: Service
+          port: 3400
+
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind:       IngressRoute
+metadata:
+  name: back
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`back.geocode.quh.io`)
+      kind:  Rule
+      services:
+        - name: back
+          kind: Service
+          port: 5000
+      middlewares:
+        - name: ratelimit
+        - name: to-https
+#        - name: cors-header
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind:       IngressRoute
+metadata:
+  name: backsecure
+spec:
+  entryPoints:
+    - websecure
+  tls:
+    certResolver: letsencrypt
+  routes:
+    - match: Host(`back.geocode.quh.io`)
+      kind:  Rule
+      services:
+        - name: back
+          kind: Service
+          port: 5000
+      middlewares:
+        - name: ratelimit
+#        - name: webauth-secret
+

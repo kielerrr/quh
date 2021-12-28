@@ -30,7 +30,7 @@ Run
 
 Run
 
-    .\fckyea.bat\
+    .\fuckyea.bat\
 
 Run checks and tweak anything that may be stuck.
 
