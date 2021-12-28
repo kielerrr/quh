@@ -1,5 +1,7 @@
 # quh
 
+Setup video coming soon!
+
 Starter Kubernetes clusters with infrastructure, routing and a front/back app with detachable sftp volume for source files.
                                                      
 - HTTP/TCP routing: traefik
